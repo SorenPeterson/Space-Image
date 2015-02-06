@@ -1,5 +1,15 @@
-<a href="/images">Find</a>
-<a href="/images/new">Upload</a>
-<% if logged_in? %>
-
-<% end %>
+<header>
+  <div>
+    <a href="/images">Find</a>
+    <a href="/images/new">Upload</a>
+    <% if logged_in? %>
+    <% else %>
+      <form action="users/login" method="post">
+        <input type="text" name="user_name" placeholder="User Name/Email">
+        <input type="password" name="password" placeholder="email">
+        <input type="submit" value="Log In">
+      </form>
+      <a href="/users/new">Sign Up</a>
+    <% end %>
+  </div>
+</header>

@@ -5,11 +5,11 @@ def create
 end
 
 def login
-  @user = User.find_by_email(params[:email])
+  @user = User.find_by_email(params[:user_name])
   if @user.password == params[:password]
-    give_token
+    session[:session_id] = Session.create(user_id: @user.id).id
   else
-    redirect_to home_url
+
   end
 end
 
@@ -22,5 +22,5 @@ def forgot_password
 end
 
 def logged_in?
-  session[:session_id] != nil
+  false
 end
