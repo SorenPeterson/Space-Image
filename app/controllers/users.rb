@@ -9,7 +9,12 @@ end
 # Authenticate and update the session / Return errors
 post '/users/login' do
   # Handle when the user does not exist
-  erb :header
+  begin
+    login
+  rescue
+    @incorrect_login = true
+  end
+  erb :header, layout: false
 end
 
 # Create and add user to the database

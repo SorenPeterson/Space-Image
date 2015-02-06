@@ -7,6 +7,10 @@ $(document).ready(function() {
   //       console.log(response.parse);
   //     }
   //   });
-    $.post("/users/login", {})
+    $.post("/users/login", {}, update_header)
   });
 });
+
+function update_header(header) {
+  $("header").html(header)
+}

@@ -20,6 +20,7 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 
+require "bcrypt"
 require "cloudinary"
 
 # Some helper constants for path-centric logic

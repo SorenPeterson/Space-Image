@@ -19,8 +19,13 @@
 </head>
 <body>
   <div class="container">
-    <%= erb :header %>
-    <%= yield %>
+    <header>
+      <%= erb :header %>
+    </header>
+
+    <div id="content">
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

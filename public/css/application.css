@@ -9,14 +9,22 @@
   width: 100%;
 }
 
-header {
-  margin: 10px;
-}
-
 .button {
-  background-color: #8FA6CC;
+  background-color: white;
   padding: 10px;
   margin: 10px;
 
   display: inline-block;
+}
+
+header {
+  padding: 10px;
+  margin: 10px;
+  background-color: #8FA6CC;
+}
+
+#content {
+  padding: 10px;
+  margin: 10px;
+  background-color: #8FA6CC;
 }

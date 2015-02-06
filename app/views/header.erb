@@ -1,17 +1,16 @@
-<header>
-  <div>
-    <a href="/images">Find</a>
-    <a href="/images/new">Upload</a>
-    <% if logged_in? %>
-    <% else %>
-      <form action="users/login" method="post">
-        <input type="text" name="user_name" placeholder="User Name/Email">
-        <input type="password" name="password" placeholder="email">
-        <div class="button login">
-          Log In
-        </div>
-      </form>
-      <a href="/users/new">Sign Up</a>
-    <% end %>
-  </div>
-</header>
+<div>
+  <a href="/images">Find</a>
+  <a href="/images/new">Upload</a>
+  <% if logged_in? %>
+  <% else %>
+    <p><%= 'Incorrect User Name/Email or Password' if @incorrect_login == true %></p>
+    <form action="users/login" method="post">
+      <input type="text" name="user_name" placeholder="User Name/Email">
+      <input type="password" name="password" placeholder="email">
+      <div class="button login">
+        Log In
+      </div>
+    </form>
+    <a href="/users/new">Sign Up</a>
+  <% end %>
+</div>

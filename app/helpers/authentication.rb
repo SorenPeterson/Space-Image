@@ -9,7 +9,7 @@ def login
   if @user.password == params[:password]
     session[:session_id] = Session.create(user_id: @user.id).id
   else
-
+    @incorrect_login = true
   end
 end
 
