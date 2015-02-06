@@ -1,13 +1,17 @@
 # Display an image specially selected for user
 get '/images' do
+  image_id = Image.all.first.sample # Magically find an image
+  redirect 'images/#{image_id}'
 end
 
 # Page to upload new image
 get '/images/new' do
+  erb :new_image
 end
 
 # Add image to the database
 post '/images' do
+  # redirect to new image
 end
 
 # View a particular image

@@ -1,27 +1,26 @@
-# Display an user specially selected for user
-get '/users' do
-end
+# get '/users' do
+# end
 
-# Page to upload new user
+# Page to create a new user
 get '/users/new' do
 end
 
-# Add user to the database
+# Create and add user to the database
 post '/users' do
 end
 
-# View a particular photo
+# View a particular user
 get '/users/:id' do
 end
 
-# Edit page for a particular photo
+# Edit page for a particular user
 get '/users/:id/edit' do
 end
 
-# Update a photo
+# Update a users preferences
 put '/users/:id' do
 end
 
-# Delete a photo
+# Delete a user
 delete '/users/:id' do
 end
