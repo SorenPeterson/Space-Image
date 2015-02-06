@@ -9,7 +9,7 @@ end
 # Authenticate and update the session / Return errors
 post '/users/login' do
   # Handle when the user does not exist
-  login
+  erb :header
 end
 
 # Create and add user to the database

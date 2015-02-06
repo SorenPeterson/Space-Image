@@ -12,3 +12,11 @@
 header {
   margin: 10px;
 }
+
+.button {
+  background-color: #8FA6CC;
+  padding: 10px;
+  margin: 10px;
+
+  display: inline-block;
+}
