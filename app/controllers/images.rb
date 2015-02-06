@@ -15,11 +15,15 @@ end
 
 # Add image to the database
 post '/images' do
-  # redirect to new image
+  imagedata = Cloudinary::Uploader.upload(params[:file][:tempfile], cloud_name: 'dtxam53uz', api_key: '652441437488924', api_secret: 'qNuJk5DfocBDd52B0emcCK_EDUo')
+  image = Image.create(link: imagedata["url"])
+  redirect "/images/#{image.id}"
 end
 
 # View a particular image
 get '/images/:id' do
+  @image = Image.find(params[:id])
+  erb :'images/view_image'
 end
 
 # Edit page for a particular image
