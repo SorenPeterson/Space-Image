@@ -17,6 +17,8 @@ gem 'shotgun'
 
 gem 'cloudinary'
 
+gem 'bcrypt'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
