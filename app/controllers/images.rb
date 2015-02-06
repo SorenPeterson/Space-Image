@@ -1,7 +1,11 @@
 # Display an image specially selected for user
 get '/images' do
-  image_id = Image.all.sample.id # Magically find an image
-  redirect "images/#{image_id}"
+  begin
+    @image = Image.all.sample # Magically find an image
+    erb :'images/view_image'
+  rescue
+    'there are no images in the database'
+  end
 end
 
 # Page to upload new image
