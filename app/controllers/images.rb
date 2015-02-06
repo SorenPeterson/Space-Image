@@ -30,7 +30,7 @@ end
 get '/images/:id/edit' do
 end
 
-# Update a image
+# Update an image
 put '/images/:id' do
 end
 
