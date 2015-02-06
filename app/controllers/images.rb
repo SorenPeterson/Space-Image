@@ -1,4 +1,4 @@
-# Display an image selected for user
+# Display an image specially selected for user
 get '/images' do
 end
 
@@ -10,18 +10,18 @@ end
 post '/images' do
 end
 
-# View a particular photo
-get '/photos/:id' do
+# View a particular image
+get '/images/:id' do
 end
 
-# Edit page for a particular photo
-get '/photos/:id/edit' do
+# Edit page for a particular image
+get '/images/:id/edit' do
 end
 
-# Update a photo
-put '/photos/:id' do
+# Update a image
+put '/images/:id' do
 end
 
-# Delete a photo
-delete '/photos/:id' do
+# Delete a image
+delete '/images/:id' do
 end
