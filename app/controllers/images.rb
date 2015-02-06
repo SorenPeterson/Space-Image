@@ -6,7 +6,6 @@ end
 
 # Page to upload new image
 get '/images/new' do
-  erb :new_image
 end
 
 # Add image to the database
