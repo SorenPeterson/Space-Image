@@ -15,6 +15,8 @@ gem 'rake'
 
 gem 'shotgun'
 
+gem 'cloudinary'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
