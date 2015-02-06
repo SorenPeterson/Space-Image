@@ -1,11 +1,7 @@
 # Display an image specially selected for user
 get '/images' do
-  begin
-    image_id = Image.all.first.sample # Magically find an image
-  rescue
-    return 'Nobody has added any images'
-  end
-  redirect 'images/#{image_id}'
+  image_id = Image.all.sample.id # Magically find an image
+  redirect "images/#{image_id}"
 end
 
 # Page to upload new image
