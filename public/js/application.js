@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $("div.login").click(function() {
+    console.log('hello');
   //   $.ajax({
   //     url: "/users/login",
   //     type: "POST",
@@ -7,10 +8,14 @@ $(document).ready(function() {
   //       console.log(response.parse);
   //     }
   //   });
-    $.post("/users/login", {}, update_header)
+    $("span.loginerrors").html('')
+    $.post("/users/login", {}, function(response) {
+      $("span.loginerrors").html(response)
+    });
   });
 
   $("div.signup").click(function() {
+    console.log('hello');
     parameters = {
       user_name: $("form.signup input[name='user_name']").val(),
       email: $("form.signup input[name='email']").val()
@@ -18,10 +23,5 @@ $(document).ready(function() {
     $.post("/users", parameters, function(response) {
       $("div#content").html(response);
     });
-    // console.log('lol');
   });
 });
-
-function update_header(header) {
-  $("header").html(header)
-}

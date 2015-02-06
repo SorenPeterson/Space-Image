@@ -3,7 +3,7 @@
   <a href="/images/new">Upload</a>
   <% if logged_in? %>
   <% else %>
-    <p><%= 'Incorrect User Name or Password' if @incorrect_login == true %></p>
+    <span class="loginerrors"></span>
     <form action="users/login" method="post">
       <input type="text" name="user_name" placeholder="User Name">
       <input type="password" name="password" placeholder="email">

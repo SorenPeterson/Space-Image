@@ -15,7 +15,8 @@ post '/users/login' do
   rescue
     @incorrect_login = true
   end
-  erb :header, layout: false
+  ''
+  erb :'users/incorrect_login', layout: false if @incorrect_login == true
 end
 
 # Create and add user to the database
