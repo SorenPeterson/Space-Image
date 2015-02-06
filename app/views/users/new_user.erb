@@ -1,7 +1,12 @@
-<form action="/users" method="post">
-  <input type="text" name="user_name" placeholder="User Name">
-  <input type="text" name="email" placeholder="Email">
-  <input type="text" name="password" placeholder="Password">
-  <input type="text" name="password_confirm" placeholder="Confirm Password">
-  <input type="submit" value="Sign Up">
+<form action="/users" class="signup" method="post">
+  <ul>
+    <li><input type="text" name="user_name" placeholder="User Name" value="<%= params[:user_name]%>"></li>
+    <li><input type="text" name="email" placeholder="Email" value="<%= params[:email]%>"></li>
+    <li><input type="password" name="password" placeholder="Password"></li>
+    <% if @errors[:mismatched_passwords] == true %>
+      <li>Passwords don't match</li>
+    <% end %>
+    <li><input type="password" name="password_confirm" placeholder="Confirm Password"></li>
+    <li><div class="button signup">Sing Up</div></li>
+  </ul>
 </form>

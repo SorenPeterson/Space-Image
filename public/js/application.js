@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $(".login").click(function() {
+  $("div.login").click(function() {
   //   $.ajax({
   //     url: "/users/login",
   //     type: "POST",
@@ -8,6 +8,17 @@ $(document).ready(function() {
   //     }
   //   });
     $.post("/users/login", {}, update_header)
+  });
+
+  $("div.signup").click(function() {
+    parameters = {
+      user_name: $("form.signup input[name='user_name']").val(),
+      email: $("form.signup input[name='email']").val()
+    }
+    $.post("/users", parameters, function(response) {
+      $("div#content").html(response);
+    });
+    // console.log('lol');
   });
 });
 
