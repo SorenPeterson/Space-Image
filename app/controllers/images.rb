@@ -1,11 +1,16 @@
 # Display an image specially selected for user
 get '/images' do
-  image_id = Image.all.first.sample # Magically find an image
+  begin
+    image_id = Image.all.first.sample # Magically find an image
+  rescue
+    return 'Nobody has added any images'
+  end
   redirect 'images/#{image_id}'
 end
 
 # Page to upload new image
 get '/images/new' do
+  erb :'images/new_image'
 end
 
 # Add image to the database
