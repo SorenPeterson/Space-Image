@@ -1,15 +1,17 @@
 <div>
-  <a href="/images">Find</a>
-  <a href="/images/new">Upload</a>
+  <a class="button" href="/images">Find</a>
+  <a class="button" href="/images/new">Upload</a>
+  <a class="button" href="/users/new">Sign Up</a>
   <% if logged_in? %>
     <a class="button" href="/users/logout">Log Out</a>
   <% else %>
-    <span class="loginerrors"></span>
+    <span style="float:right;">
     <form class="login" onsubmit="login(); return false">
       <input type="text" name="user_name" placeholder="User Name">
       <input type="password" name="password" placeholder="email">
       <input type="submit" value="Log In">
     </form>
-    <a href="/users/new">Sign Up</a>
+    <span class="loginerrors"></span>
+  </span>
   <% end %>
 </div>

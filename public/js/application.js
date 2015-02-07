@@ -24,3 +24,11 @@ function signup() {
     $("span.signuperrors").html(response.content);
   });
 }
+
+function like() {
+  $.post("")
+}
+
+function dislike() {
+
+}

@@ -1,0 +1,37 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  padding: 40px;
+  background-color: #FF9900;
+  margin: 50px 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: #CCCCCC;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+#content {
+  background-color: #FF9900;
+  max-width: 400px;
+  padding: 20px;
+  margin: auto;
+}
+
+#content img {
+  width: 100%;
+}
+
+form.signup ul {
+  list-style-type: none;
+}
+
+a {
+  color: black;
+}

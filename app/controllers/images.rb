@@ -30,6 +30,14 @@ end
 get '/images/:id/edit' do
 end
 
+post 'images/:id/like' do
+
+end
+
+post 'images/:id/dislike' do
+
+end
+
 # Update an image
 put '/images/:id' do
 end

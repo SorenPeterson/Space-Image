@@ -1,5 +1,7 @@
-# get '/users' do
-# end
+get '/users' do
+  @users = User.all
+  erb :'users/all_users'
+end
 
 # Page to create a new user
 get '/users/new' do
