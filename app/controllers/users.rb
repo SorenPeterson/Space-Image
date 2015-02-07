@@ -31,13 +31,12 @@ end
 # Create and add user to the database
 post '/users' do
   # Handle bad information
-  mismatched_passwords = params[:password] != params[:password_confirm]
   begin
     create
   rescue
   end
   content_type :json
-  if @user.persisted? && !mismatched_passwords
+  if @user.persisted?
     return {content:"Welcome, #{@user.user_name}"}.to_json
   else
     return {content:(erb :'users/signup_errors', layout: false)}.to_json
