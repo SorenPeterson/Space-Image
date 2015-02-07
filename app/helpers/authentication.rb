@@ -5,8 +5,10 @@ def create
 end
 
 def login
-  @user = User.find_by_email(params[:user_name])
-  if @user.password == params[:password]
+  @user = User.find_by(user_name: params[:user_name])
+  if !@user.is_a?(User)
+    @incorrect_login = true
+  elsif @user.password == params[:password]
     session[:session_id] = Session.create(user_id: @user.id).id
   else
     @incorrect_login = true

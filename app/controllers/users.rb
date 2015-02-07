@@ -10,12 +10,8 @@ end
 # Authenticate and update the session / Return errors
 post '/users/login' do
   # Handle when the user does not exist
-  begin
-    login
-  rescue
-    @incorrect_login = true
-  end
-  ''
+  @incorrect_login = false
+  login
   erb :'users/incorrect_login', layout: false if @incorrect_login == true
 end
 
@@ -24,7 +20,7 @@ post '/users' do
   @errors = {}
   # Handle bad information
   @errors[:mismatched_passwords] == true if params[:password] != params[:password_confirm]
-  erb :'users/new_user', layout: false
+  redirect "/users/"
 end
 
 # View a particular user

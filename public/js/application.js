@@ -1,15 +1,12 @@
 $(document).ready(function() {
   $("div.login").click(function() {
-    console.log('hello');
-  //   $.ajax({
-  //     url: "/users/login",
-  //     type: "POST",
-  //     success: function(response) {
-  //       console.log(response.parse);
-  //     }
-  //   });
     $("span.loginerrors").html('')
-    $.post("/users/login", {}, function(response) {
+    parameters = {
+      user_name: $("form.login input[name='user_name']").val(),
+      password: $("form.login input[name='password']").val()
+    }
+
+    $.post("/users/login", parameters, function(response) {
       $("span.loginerrors").html(response)
     });
   });
@@ -20,6 +17,7 @@ $(document).ready(function() {
       user_name: $("form.signup input[name='user_name']").val(),
       email: $("form.signup input[name='email']").val()
     }
+
     $.post("/users", parameters, function(response) {
       $("div#content").html(response);
     });
