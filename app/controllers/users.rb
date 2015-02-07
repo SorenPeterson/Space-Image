@@ -48,7 +48,7 @@ end
 
 # View a particular user
 get '/users/:id' do
-
+  erb :'users/user_page'
 end
 
 # Edit page for a particular user
