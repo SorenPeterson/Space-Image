@@ -15,10 +15,11 @@ post '/users/login' do
   @incorrect_login = false
   login
   content_type :json
+  params[:password]
   return {
     successful: false,
     content: (erb :'users/incorrect_login', layout: false)
-  }.to_json if @incorrect_login == true
+  }.to_json if (@incorrect_login) == true
   return {
     successful: true,
     content: (erb :header, layout: false)

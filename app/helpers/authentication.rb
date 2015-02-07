@@ -1,5 +1,6 @@
 def create
   @user = User.new(user_name: params[:user_name], email: params[:email])
+  p params.inspect
   @user.password = params[:password]
   @user.save!
 end

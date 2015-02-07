@@ -17,7 +17,8 @@ function login() {
 function signup() {
   parameters = {
     user_name: $("form.signup input[name='user_name']").val(),
-    email: $("form.signup input[name='email']").val()
+    email: $("form.signup input[name='email']").val(),
+    password: $("form.signup input[name='password']").val()
   }
 
   $.post("/users", parameters, function(response) {
