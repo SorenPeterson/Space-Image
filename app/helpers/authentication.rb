@@ -28,3 +28,7 @@ end
 def logged_in?
   session[:this_id]
 end
+
+def current_user
+  @user = User.find(Session.find(session[:this_id]).user_id)
+end
