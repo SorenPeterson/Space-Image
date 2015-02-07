@@ -38,9 +38,9 @@ post '/users' do
   end
   content_type :json
   if @user.persisted? && !mismatched_passwords
-    "Welcome, #{@user.user_name}"
+    return {content:"Welcome, #{@user.user_name}"}.to_json
   else
-    erb :'users/signup_errors', layout: false
+    return {content:(erb :'users/signup_errors', layout: false)}.to_json
   end
 end
 

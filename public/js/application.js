@@ -16,14 +16,13 @@ $(document).ready(function() {
   });
 
   $("div.signup").click(function() {
-    console.log('hello');
     parameters = {
       user_name: $("form.signup input[name='user_name']").val(),
       email: $("form.signup input[name='email']").val()
     }
 
     $.post("/users", parameters, function(response) {
-      $(".signuperrors").html(response.content);
+      $("span.signuperrors").html(response.content);
     });
   });
 });
