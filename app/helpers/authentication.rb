@@ -9,7 +9,8 @@ def login
   if !@user.is_a?(User)
     @incorrect_login = true
   elsif @user.password == params[:password]
-    session[:session_id] = Session.create(user_id: @user.id).id
+    new_session = Session.create(user_id: @user.id)
+    session[:this_id] = new_session.id
   else
     @incorrect_login = true
   end
@@ -24,5 +25,5 @@ def forgot_password
 end
 
 def logged_in?
-  false
+  p session[:this_id]
 end

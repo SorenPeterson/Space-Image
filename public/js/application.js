@@ -7,7 +7,7 @@ $(document).ready(function() {
     }
 
     $.post("/users/login", parameters, function(response) {
-      $("span.loginerrors").html(response)
+      $("span.loginerrors").html(response);
     });
   });
 

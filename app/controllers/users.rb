@@ -12,7 +12,20 @@ post '/users/login' do
   # Handle when the user does not exist
   @incorrect_login = false
   login
-  erb :'users/incorrect_login', layout: false if @incorrect_login == true
+  content_type :json
+  return {
+    successful: false,
+    content: (erb :'users/incorrect_login', layout: false)
+  }.to_json if @incorrect_login == true
+  return {
+    successful: true,
+    content: (erb :header)
+  }.to_json
+end
+
+get '/users/logout' do
+  session.delete(:this_id)
+  redirect '/images'
 end
 
 # Create and add user to the database
