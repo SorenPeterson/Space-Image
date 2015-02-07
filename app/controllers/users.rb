@@ -19,7 +19,7 @@ post '/users/login' do
   }.to_json if @incorrect_login == true
   return {
     successful: true,
-    content: (erb :header)
+    content: (erb :header, layout: false)
   }.to_json
 end
 
@@ -30,10 +30,18 @@ end
 
 # Create and add user to the database
 post '/users' do
-  @errors = {}
   # Handle bad information
-  @errors[:mismatched_passwords] == true if params[:password] != params[:password_confirm]
-  redirect "/users/"
+  mismatched_passwords = params[:password] != params[:password_confirm]
+  begin
+    create
+  rescue
+  end
+  content_type :json
+  if @user.persisted? && !mismatched_passwords
+    "Welcome, #{@user.user_name}"
+  else
+    erb :'users/signup_errors', layout: false
+  end
 end
 
 # View a particular user

@@ -1,11 +1,9 @@
+<span class="signuperrors"></span>
 <form action="/users" class="signup" method="post">
   <ul>
     <li><input type="text" name="user_name" placeholder="User Name" value="<%= params[:user_name]%>"></li>
     <li><input type="text" name="email" placeholder="Email" value="<%= params[:email]%>"></li>
     <li><input type="password" name="password" placeholder="Password"></li>
-    <% if @errors[:mismatched_passwords] == true %>
-      <li>Passwords don't match</li>
-    <% end %>
     <li><input type="password" name="password_confirm" placeholder="Confirm Password"></li>
     <li><div class="button signup">Sign Up</div></li>
   </ul>

@@ -7,7 +7,11 @@ $(document).ready(function() {
     }
 
     $.post("/users/login", parameters, function(response) {
-      $("span.loginerrors").html(response);
+      if(response.successful) {
+        $("header").html(response.content);
+      } else {
+        $("span.loginerrors").html(response.content);
+      }
     });
   });
 
@@ -19,7 +23,7 @@ $(document).ready(function() {
     }
 
     $.post("/users", parameters, function(response) {
-      $("div#content").html(response);
+      $(".signuperrors").html(response.content);
     });
   });
 });

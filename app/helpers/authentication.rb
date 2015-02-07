@@ -1,5 +1,5 @@
 def create
-  @user = User.new(params[:user_name])
+  @user = User.new(user_name: params[:user_name], email: params[:email])
   @user.password = params[:password]
   @user.save!
 end
@@ -25,5 +25,5 @@ def forgot_password
 end
 
 def logged_in?
-  p session[:this_id]
+  session[:this_id]
 end

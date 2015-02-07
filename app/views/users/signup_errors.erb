@@ -1,0 +1,5 @@
+<ul style="color:red;">
+  <% @user.errors.messages.each do |field, message| %>
+    <li><%= field %> <%= message.first %></li>
+  <% end %>
+</ul>
