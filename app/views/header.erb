@@ -5,12 +5,10 @@
     <a class="button" href="/users/logout">Log Out</a>
   <% else %>
     <span class="loginerrors"></span>
-    <form class="login" action="users/login" method="post">
+    <form class="login" onsubmit="login(); return false">
       <input type="text" name="user_name" placeholder="User Name">
       <input type="password" name="password" placeholder="email">
-      <div class="button login">
-        Log In
-      </div>
+      <input type="submit" value="Log In">
     </form>
     <a href="/users/new">Sign Up</a>
   <% end %>

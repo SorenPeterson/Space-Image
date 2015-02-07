@@ -1,9 +1,9 @@
 <span class="signuperrors"></span>
-<form action="/users" class="signup" method="post">
+<form class="signup" onsubmit="signup(); return false">
   <ul>
     <li><input type="text" name="user_name" placeholder="User Name" value="<%= params[:user_name]%>"></li>
     <li><input type="text" name="email" placeholder="Email" value="<%= params[:email]%>"></li>
     <li><input type="password" name="password" placeholder="Password"></li>
-    <li><div class="button signup">Sign Up</div></li>
+    <li><input type="submit" value="Sign Up"></li>
   </ul>
 </form>
