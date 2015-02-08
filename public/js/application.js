@@ -23,6 +23,9 @@ function signup() {
 
   $.post("/users", parameters, function(response) {
     $("span.signuperrors").html(response.content);
+    if(response.successful) {
+      window.location.replace("/images");
+    }
   });
 }
 

@@ -36,13 +36,19 @@ post '/users' do
   # Handle bad information
   begin
     create
+    login
   rescue
   end
   content_type :json
   if @user.persisted?
-    return {content:"Welcome, #{@user.user_name}"}.to_json
+    return {
+      successful: true
+    }.to_json
   else
-    return {content:(erb :'users/signup_errors', layout: false)}.to_json
+    return {
+      successful: false,
+      content:(erb :'users/signup_errors', layout: false)
+    }.to_json
   end
 end
 
