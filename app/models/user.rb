@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   end
 
   def recommended_images
+    all_images = similar_users.map { |user|
+      user.images.shuffle.to_a
+    }.flatten
   end
 
   def password
