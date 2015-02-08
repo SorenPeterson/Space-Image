@@ -1,10 +1,6 @@
 # Display an image specially selected for user
 get '/images' do
-  if logged_in?
-    @image = current_user.recommended_images.first || Image.all.sample
-  else
-    @image = Image.all.sample
-  end
+  get_recommendation
 
   begin
     erb :'images/view_image'
@@ -38,12 +34,14 @@ end
 
 post '/images/*/like' do
   Like.create(image_id: params[:splat][0], user_id: current_user.id)
-  @image = Image.all.sample
+  generate_similarities
+  get_recommendation
   erb :'images/view_image', layout: false
 end
 
 post '/images/*/dislike' do
-  @image = Image.all.sample
+  generate_similarities
+  get_recommendation
   erb :'images/view_image', layout: false
 end
 

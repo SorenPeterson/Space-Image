@@ -1,10 +1,11 @@
 def generate_similarities
-  User.all.each do |first_user|
-    User.all.each do |second_user|
 
-    end
-  end
 end
 
-def generate_recommendations
+def get_recommendation
+  if logged_in?
+    @image = current_user.recommended_images.first || Image.all.sample
+  else
+    @image = Image.all.sample
+  end
 end
