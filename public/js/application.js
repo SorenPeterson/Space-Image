@@ -32,19 +32,27 @@ function signup() {
 function like(id) {
   $.post("/images/"+id+"/like", {},
     function(response) {
-      $("#content").html(response);
+      $("#imagedisplay").html(response);
     });
 }
 
 function dislike(id) {
   $.post("/images/"+id+"/dislike", {},
     function(response) {
-      $("#content").html(response);
+      $("#imagedisplay").html(response);
     });
 }
 
 $(document).ready(function () {
-    $("img").error(function(){
-      $(this).hide();
+  $("img").error(function(){
+    $(this).hide();
+    $.ajax({
+      url: '/images',
+      data: {
+        url: this.src
+      },
+      type: 'delete',
+      success: function() {console.log("SUXESS")}
     });
+  });
 });

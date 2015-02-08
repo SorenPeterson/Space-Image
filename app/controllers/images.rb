@@ -52,5 +52,6 @@ put '/images/:id' do
 end
 
 # Delete a image
-delete '/images/:id' do
+delete '/images' do
+  Image.find_by(link: params[:url]).delete
 end
