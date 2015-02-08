@@ -1,16 +1,16 @@
 # Display an image specially selected for user
 get '/images' do
-  begin
-    @image = Image.all.sample # Magically find an image
-  rescue
-    @image = nil
+  if logged_in?
+    @image = current_user.recommended_images.first || Image.all.sample
+  else
+    @image = Image.all.sample
   end
 
   begin
     erb :'images/view_image'
   rescue
     session.clear
-        erb :'images/view_image'
+    erb :'images/view_image'
   end
 end
 

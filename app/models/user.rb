@@ -18,10 +18,16 @@ class User < ActiveRecord::Base
       first_simil.calculated_similarity <=> second_simil.calculated_similarity
     }
     simil_users = ordered_simils.map { |similarity|
-      first_user = User.find(similarity.first_user_id)
-      second_user = User.find(similarity.second_user_id)
-      first_user.id == self.id ? second_user : first_user
+      begin
+        first_user = User.find(similarity.first_user_id)
+        second_user = User.find(similarity.second_user_id)
+        first_user.id == self.id ? second_user : first_user
+      rescue
+        nil
+      end
     }
+    simil_users.delete(nil)
+    simil_users
   end
 
   def recommended_images
