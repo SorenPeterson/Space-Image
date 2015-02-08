@@ -2,6 +2,11 @@
 get '/images' do
   begin
     @image = Image.all.sample # Magically find an image
+  rescue
+    @image = nil
+  end
+
+  begin
     erb :'images/view_image'
   rescue
     session.clear
