@@ -10,7 +10,7 @@ get '/images' do
     erb :'images/view_image'
   rescue
     session.clear
-    redirect '/images'
+        erb :'images/view_image'
   end
 end
 
