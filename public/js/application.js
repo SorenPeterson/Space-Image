@@ -42,3 +42,9 @@ function dislike(id) {
       $("#content").html(response);
     });
 }
+
+$(document).ready(function () {
+    $("img").error(function(){
+      $(this).hide();
+    });
+});
