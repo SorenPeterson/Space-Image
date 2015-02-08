@@ -48,6 +48,7 @@ end
 
 # View a particular user
 get '/users/:id' do
+  @images = current_user.images
   erb :'users/user_page'
 end
 
@@ -63,5 +64,7 @@ end
 
 # Delete a user
 delete '/users/:id' do
-
+  current_user.delete
+  session.clear
+  redirect '/images'
 end

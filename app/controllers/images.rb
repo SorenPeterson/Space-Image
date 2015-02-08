@@ -4,7 +4,8 @@ get '/images' do
     @image = Image.all.sample # Magically find an image
     erb :'images/view_image'
   rescue
-    'there are no images in the database'
+    session.clear
+    redirect '/images'
   end
 end
 
@@ -30,12 +31,15 @@ end
 get '/images/:id/edit' do
 end
 
-post 'images/:id/like' do
-
+post '/images/*/like' do
+  Like.create(image_id: params[:splat][0], user_id: current_user.id)
+  @image = Image.all.sample
+  erb :'images/view_image', layout: false
 end
 
-post 'images/:id/dislike' do
-
+post '/images/*/dislike' do
+  @image = Image.all.sample
+  erb :'images/view_image', layout: false
 end
 
 # Update an image

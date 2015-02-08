@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :email, presence: true
 
+  has_many :likes
+  has_many :images, through: :likes
+
   def password
     @password ||= Password.new(password_hash)
   end

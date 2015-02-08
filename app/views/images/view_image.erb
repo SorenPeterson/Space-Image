@@ -1,3 +1,5 @@
 <img src="<%= @image.link %>">
-<input type="submit" value="Like" onsubmit="like(<%= @image.id %>)">
-<input type="submit" value="Dislike" onsubmit="like(<%= @image.id %>)">
+<% if logged_in? %>
+  <input type="submit" value="Like" onclick="like(<%= @image.id %>);">
+  <input type="submit" value="Dislike" onclick="dislike(<%= @image.id %>);">
+<% end %>

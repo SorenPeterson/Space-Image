@@ -26,10 +26,16 @@ function signup() {
   });
 }
 
-function like() {
-  $.post("")
+function like(id) {
+  $.post("/images/"+id+"/like", {},
+    function(response) {
+      $("#content").html(response);
+    });
 }
 
-function dislike() {
-
+function dislike(id) {
+  $.post("/images/"+id+"/dislike", {},
+    function(response) {
+      $("#content").html(response);
+    });
 }
