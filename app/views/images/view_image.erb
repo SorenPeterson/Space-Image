@@ -5,6 +5,7 @@
       <input type="submit" value="Like" onclick="like(<%= @image.id %>);">
       <input type="submit" value="Dislike" onclick="dislike(<%= @image.id %>);">
     <% end %>
+    <input type="submit" value="Random" onclick="random();">
   <% else %>
     <p>There is no image for you to look at! Sad you :(</p>
   <% end %>

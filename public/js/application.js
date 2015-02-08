@@ -43,6 +43,13 @@ function dislike(id) {
     });
 }
 
+function random() {
+  $.get("/images/random", {},
+    function(response) {
+      $("#imagedisplay").html(response);
+    });
+}
+
 $(document).ready(function () {
   $("img").error(function(){
     $(this).hide();

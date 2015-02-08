@@ -15,6 +15,12 @@ get '/images/new' do
   erb :'images/new_image'
 end
 
+# Get a random image from le server
+get '/images/random' do
+  get_recommendation
+  erb :'images/view_image', layout: false
+end
+
 # Add image to the database
 post '/images' do
   imagedata = Cloudinary::Uploader.upload(params[:file][:tempfile], cloud_name: 'dtxam53uz', api_key: '652441437488924', api_secret: 'qNuJk5DfocBDd52B0emcCK_EDUo')
