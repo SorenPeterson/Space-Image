@@ -5,3 +5,6 @@ def generate_similarities
     end
   end
 end
+
+def generate_recommendations
+end

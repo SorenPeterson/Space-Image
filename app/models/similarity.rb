@@ -1,3 +1,5 @@
 class Similarity < ActiveRecord::Base
-  # Remember to create a migration!
+  validates :calculated_similarity, presence: true
+
+  belongs_to :users, class_name: 'User'
 end
