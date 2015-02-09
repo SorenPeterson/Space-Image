@@ -1,5 +1,19 @@
 def generate_similarities
-  # Similarity.where('first_user_id = ? OR second_user_id = ?', current_user.id, current_user.id)
+  User.all.each do |other_user|
+    calculated_similarity =
+
+    new_sim = Similarity.create(first_user_id: current_user.id, second_user_id: other_user.id, calculated_similarity: 10)
+
+    unless new_sim.persisted?
+      Similarity.where(<<-SQL
+      (first_user_id = #{self.first_user_id}
+          AND second_user_id = #{self.second_user_id})
+      OR (first_user_id = #{self.second_user_id}
+          AND second_user_id = #{self.first_user_id})
+      SQL
+      ).first.update_attributes(calculated_similarity: calculated_similarity)
+    end
+  end
 end
 
 def get_recommendation
