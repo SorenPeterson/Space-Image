@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   def recommended_images
     all_images = similar_users.map { |user|
-      user.images.shuffle.to_a
+      user.liked_images.shuffle.to_a
     }.flatten
   end
 
