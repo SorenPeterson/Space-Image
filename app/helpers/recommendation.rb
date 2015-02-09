@@ -7,15 +7,15 @@ def generate_similarities
 
     new_sim = Similarity.create(first_user_id: current_user.id, second_user_id: other_user.id, calculated_similarity: calculated_similarity)
 
-    # unless new_sim.persisted?
-    #   Similarity.where(<<-SQL
-    #   (first_user_id = #{self.first_user_id}
-    #       AND second_user_id = #{self.second_user_id})
-    #   OR (first_user_id = #{self.second_user_id}
-    #       AND second_user_id = #{self.first_user_id})
-    #   SQL
-    #   ).first.update_attributes(calculated_similarity: calculated_similarity)
-    # end
+    unless new_sim.persisted?
+      existing = Similarity.where("(first_user_id = #{current_user.id}
+                AND second_user_id = #{other_user.id})
+            OR (first_user_id = #{other_user.id}
+                AND second_user_id = #{current_user.id})").first
+      unless existing.nil?
+        existing.update_attributes(calculated_similarity: calculated_similarity)
+      end
+    end
   end
 end
 

@@ -30,5 +30,10 @@ def logged_in?
 end
 
 def current_user
-  @user = User.find(Session.find(session[:this_id]).user_id)
+  begin
+    @user = User.find(Session.find(session[:this_id]).user_id)
+  rescue
+    session.clear
+    redirect '/'
+  end
 end
