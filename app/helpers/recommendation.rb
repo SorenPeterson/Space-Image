@@ -1,5 +1,5 @@
 def generate_similarities
-
+  # Similarity.where('first_user_id = ? OR second_user_id = ?', current_user.id, current_user.id)
 end
 
 def get_recommendation

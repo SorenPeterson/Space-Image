@@ -1,5 +1,10 @@
 <center><h2><%= current_user.user_name %></h2></center>
-<% @images.each do |image| %>
+<h3>Liked Images</h3>
+<% @liked_images.each do |image| %>
+  <img src="<%= image.link %>">
+<% end %>
+<h3>Disliked Images</h3>
+<% @disliked_images.each do |image| %>
   <img src="<%= image.link %>">
 <% end %>
 <form action="/users/<%= current_user.id %>" method="post">
