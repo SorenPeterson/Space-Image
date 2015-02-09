@@ -1,5 +1,6 @@
 def generate_similarities
   User.all.each do |other_user|
+    p '----------------'
     calculated_similarity = current_user.liked_images.count - (current_user.liked_images - other_user.liked_images).count
     calculated_similarity += current_user.disliked_images.count - (current_user.disliked_images - other_user.disliked_images).count
     calculated_similarity -= current_user.liked_images.count - (current_user.liked_images - other_user.disliked_images).count
@@ -8,12 +9,12 @@ def generate_similarities
     new_sim = Similarity.create(first_user_id: current_user.id, second_user_id: other_user.id, calculated_similarity: calculated_similarity)
 
     unless new_sim.persisted?
-      existing = Similarity.where("(first_user_id = #{current_user.id}
-                AND second_user_id = #{other_user.id})
-            OR (first_user_id = #{other_user.id}
-                AND second_user_id = #{current_user.id})").first
+      existing = Similarity.where("(first_user_id = #{current_user.id} AND second_user_id = #{other_user.id}) OR (first_user_id = #{other_user.id} AND second_user_id = #{current_user.id})").first
       unless existing.nil?
-        existing.update_attributes(calculated_similarity: calculated_similarity)
+        # existing.update_attributes(calculated_similarity: calculated_similarity)
+        # p existing.persisted?
+        existing.delete
+        Similarity.create(first_user_id: current_user.id, second_user_id: other_user.id, calculated_similarity: calculated_similarity)
       end
     end
   end
