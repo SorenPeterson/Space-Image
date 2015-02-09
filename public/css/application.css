@@ -1,14 +1,16 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  background-image: url("/img/space_background.jpg");
+  background-size: 100%;
 }
 
 header {
   padding: 40px;
-  background-color: #FF9900;
-  margin: 50px 0;
 }
 
 .button {
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px black;
   display: inline-block;
   padding: 10px;
   margin: 10px;
@@ -18,14 +20,18 @@ header {
 }
 
 #content {
-  background-color: #FF9900;
+  background-color: rgba(255,255,255,0.5);
+  background-repeat: none;
   max-width: 400px;
   padding: 20px;
   margin: auto;
 }
 
 #content img {
+  border: 1px solid black;
+  margin-top: 10px;
   width: 100%;
+  box-shadow: 5px 5px 5px black;
 }
 
 form.signup ul {
