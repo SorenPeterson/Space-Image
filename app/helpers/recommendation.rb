@@ -25,6 +25,7 @@ def get_recommendation
     possible_images = current_user.recommended_images
     possible_images = ((possible_images) - (current_user.images.to_a))
     possible_images = Image.all.shuffle if possible_images.empty?
+    possible_images = ((possible_images) - (current_user.images.to_a))
     @image = possible_images.first
   else
     possible_images = Image.all.shuffle
