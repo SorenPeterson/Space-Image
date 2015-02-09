@@ -54,7 +54,8 @@ end
 
 # View a particular user
 get '/users/:id' do
-  @images = current_user.images
+  @liked_images = current_user.liked_images
+  @disliked_images = current_user.disliked_images
   erb :'users/user_page'
 end
 

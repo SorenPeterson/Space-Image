@@ -46,6 +46,7 @@ post '/images/*/like' do
 end
 
 post '/images/*/dislike' do
+  Dislike.create(image_id: params[:splat][0], user_id: current_user.id)
   generate_similarities
   get_recommendation
   erb :'images/view_image', layout: false
