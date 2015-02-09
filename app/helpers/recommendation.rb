@@ -1,18 +1,21 @@
 def generate_similarities
   User.all.each do |other_user|
-    calculated_similarity =
+    calculated_similarity = current_user.liked_images.count - (current_user.liked_images - other_user.liked_images).count
+    calculated_similarity += current_user.disliked_images.count - (current_user.disliked_images - other_user.disliked_images).count
+    calculated_similarity -= current_user.liked_images.count - (current_user.liked_images - other_user.disliked_images).count
+    calculated_similarity -= current_user.disliked_images.count - (current_user.liked_images - other_user.disliked_images).count
 
-    new_sim = Similarity.create(first_user_id: current_user.id, second_user_id: other_user.id, calculated_similarity: 10)
+    new_sim = Similarity.create(first_user_id: current_user.id, second_user_id: other_user.id, calculated_similarity: calculated_similarity)
 
-    unless new_sim.persisted?
-      Similarity.where(<<-SQL
-      (first_user_id = #{self.first_user_id}
-          AND second_user_id = #{self.second_user_id})
-      OR (first_user_id = #{self.second_user_id}
-          AND second_user_id = #{self.first_user_id})
-      SQL
-      ).first.update_attributes(calculated_similarity: calculated_similarity)
-    end
+    # unless new_sim.persisted?
+    #   Similarity.where(<<-SQL
+    #   (first_user_id = #{self.first_user_id}
+    #       AND second_user_id = #{self.second_user_id})
+    #   OR (first_user_id = #{self.second_user_id}
+    #       AND second_user_id = #{self.first_user_id})
+    #   SQL
+    #   ).first.update_attributes(calculated_similarity: calculated_similarity)
+    # end
   end
 end
 

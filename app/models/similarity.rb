@@ -1,6 +1,6 @@
 class Similarity < ActiveRecord::Base
   validates :calculated_similarity, presence: true
-  validates :calculated_similarity, greater_than: 3
+  validates :calculated_similarity, numericality: { greater_than: 0 }
   validates :first_user_id, presence: true
   validates :second_user_id, presence: true
 
