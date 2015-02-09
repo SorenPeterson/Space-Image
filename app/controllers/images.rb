@@ -17,7 +17,7 @@ end
 
 # Get a random image from le server
 get '/images/random' do
-  get_recommendation
+  get_random_recommendation
   erb :'images/view_image', layout: false
 end
 

@@ -13,3 +13,14 @@ def get_recommendation
     @image = possible_images.first
   end
 end
+
+def get_random_recommendation
+  possible_images = []
+  if logged_in?
+    possible_images = Image.all.shuffle
+    @image = ((possible_images) - (current_user.images.to_a)).first
+  else
+    possible_images = Image.all.shuffle
+    @image = possible_images.first
+  end
+end

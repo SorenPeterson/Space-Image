@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
   has_many :likes
-  has_many :images, through: :likes
+  has_many :liked_images, source: :image, through: :likes
 
   has_many :first_similarities, class_name: 'Similarity', foreign_key: :first_user_id
   has_many :second_similarities, class_name: 'Similarity', foreign_key: :second_user_id
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     all_images = similar_users.map { |user|
       user.images.shuffle.to_a
     }.flatten
+  end
+
+  def images
+    self.liked_images
   end
 
   def password
