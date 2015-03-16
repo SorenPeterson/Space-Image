@@ -45,9 +45,10 @@ post '/users' do
       successful: true
     }.to_json
   else
+    content = erb :'users/signup_errors', layout: false
     return {
       successful: false,
-      content:(erb :'users/signup_errors', layout: false)
+      content: content
     }.to_json
   end
 end
